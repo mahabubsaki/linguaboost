@@ -3,6 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
+  "exports": {
+    "./base.json": "./base.json",
+    "./nextjs.json": "./nextjs.json",
+    "./react-library.json": "./react-library.json",
+    "./electron.json": "./electron.json",
+    "./node.json": "./node.json",
+    "./react-native.json": "./react-native.json"
+  },
+  "dependencies": {
+    "typescript": "^5.8.3"
+  },
   "publishConfig": {
     "access": "public"
   }

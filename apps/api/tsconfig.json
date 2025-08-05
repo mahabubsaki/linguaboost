@@ -1,0 +1,15 @@
+{
+  "extends": "@repo/typescript-config/node.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx",
+    "outDir": "./dist",
+    "noEmit": false
+  },
+  "exclude": [
+    "node_modules",
+    "*.config.js",
+    "*.config.mjs",
+    "dist"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@repo/types",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./node": "./node.d.ts",
+    "./react": "./react.d.ts",
+    "./shared": "./shared.d.ts"
+  },
+  "dependencies": {
+    "@types/node": "^22.16.5",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6"
+  }
+}

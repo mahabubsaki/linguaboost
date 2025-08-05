@@ -1,0 +1,13 @@
+{
+  "name": "@repo/react",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  }
+}
