@@ -5,17 +5,16 @@
   "type": "module",
   "scripts": {
     "start-all": "expo start --port=3003",
+    "build-local-android": "expo run:android",
     "dev": "expo start --android --port=3003",
-    "build": "eas build --platform android",
+    "build": "eas build --platform android --profile development",
     "ios": "expo start --ios --port=3003",
     "web": "expo start --web --port=3003",
     "test": "jest --watchAll",
     "lint": "eslint --cache .",
     "format": "prettier --write .",
-    "check-types": "tsc --noEmit"
-  },
-  "jest": {
-    "preset": "jest-expo"
+    "check-types": "tsc --noEmit",
+    "android": "expo run:android"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
@@ -34,17 +33,15 @@
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
-    "react-native-web": "~0.20.0"
+    "react-native-web": "~0.20.0",
+    "react": "19.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@repo/eslint-config": "workspace:*",
     "@repo/prettier-config": "workspace:*",
     "@repo/types": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "jest": "^29.2.1",
-    "jest-expo": "~53.0.9",
-    "react-test-renderer": "^19.1.1"
+    "@repo/typescript-config": "workspace:*"
   },
   "prettier": "@repo/prettier-config",
   "private": true,
