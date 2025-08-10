@@ -8,10 +8,12 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
     "check-all": "pnpm lint && pnpm format && pnpm check-types",
-    "web":"pnpm --filter web dev",
-    "mobile":"pnpm --filter mobile dev",
-    "desktop":"pnpm --filter desktop dev",
-    "api":"pnpm --filter api dev"
+    "web": "pnpm --filter web dev",
+    "mobile": "pnpm --filter mobile dev",
+    "desktop": "pnpm --filter desktop dev",
+    "api": "pnpm --filter api dev",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "devDependencies": {
     "eslint": "^9.31.0",
@@ -29,5 +31,11 @@
   "packageManager": "pnpm@10.14.0",
   "engines": {
     "node": ">=18"
+  },
+  "version": "1.0.0",
+  "dependencies": {
+    "expo": "~53.0.20",
+    "react": "19.0.0",
+    "react-native": "0.79.5"
   }
 }

@@ -9,22 +9,21 @@ interface ThemedIconProps {
   name?: FontAwesomeIconName;
   children?: React.ReactNode;
   size?: number;
+  color?: string;
 }
 
-const ThemedIcon = ({ name, children, size }: ThemedIconProps) => {
+const ThemedIcon = ({ name, children, size, color }: ThemedIconProps) => {
   const { themeName, colorScheme } = useTheme();
-  const color = hexColors[themeName][colorScheme ?? 'light'].tint;
+  const themedColor = color ?? hexColors[themeName][colorScheme ?? 'light'].tint;
   //if children available make a new component which wraps the children with the themed styles
-  const themedChildren = React.Children.map(children, (child) => {
-    if (React.isValidElement(child) && typeof child.type !== 'string') {
-      return React.cloneElement(child as React.ReactElement<{ color?: string; size?: number }>, {
-        color,
-        size
-      });
+  const themedChildren = React.cloneElement(
+    children as React.ReactElement<{ color?: string; size?: number }>,
+    {
+      color: themedColor,
+      size
     }
-    return child;
-  });
-  return children ? themedChildren : <FontAwesome name={name} color={color} size={size} />;
+  );
+  return children ? themedChildren : <FontAwesome name={name} color={themedColor} size={size} />;
 };
 
 export default ThemedIcon;
