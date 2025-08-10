@@ -15,7 +15,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(app)'
+  initialRouteName: '(splash)'
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -48,12 +48,14 @@ export default function RootLayout() {
 function RootLayoutNav() {
   return (
     <NativeWindThemeProvider defaultTheme="linguaboost">
-      {/* <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}> */}
       <Stack>
-        <Stack.Screen name="(app)" options={{ headerShown: false }} />
-        {/* <Stack.Screen name="modal" options={{ presentation: 'modal' }} /> */}
+        <Stack.Screen
+          name="(splash)"
+          options={{
+            headerShown: false // Hide the header for the main app screen
+          }}
+        />
       </Stack>
-      {/* </ThemeProvider> */}
     </NativeWindThemeProvider>
   );
 }
