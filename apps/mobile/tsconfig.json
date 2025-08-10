@@ -1,10 +1,24 @@
 {
-  "extends": ["expo/tsconfig.base", "@repo/typescript-config/react-native.json"],
+  "extends": [
+    "expo/tsconfig.base",
+    "@repo/typescript-config/react-native.json"
+  ],
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "babel.config.js",
+    "tailwind.config.js",
+    "babel.config.js",
+    "nativewind-env.d.ts"
+  ]
 }

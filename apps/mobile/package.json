@@ -2,7 +2,6 @@
   "name": "mobile",
   "main": "expo-router/entry",
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
     "start-all": "expo start --port=3003",
     "build-local-android": "expo run:android",
@@ -29,19 +28,21 @@
     "expo-status-bar": "~2.2.3",
     "expo-system-ui": "~5.0.10",
     "expo-web-browser": "~14.2.0",
+    "nativewind": "^4.1.23",
+    "react": "19.0.0",
     "react-native": "0.79.5",
-    "react-native-reanimated": "~3.17.4",
+    "react-native-reanimated": "~3.17.5",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
-    "react-native-web": "~0.20.0",
-    "react": "19.0.0"
+    "react-native-web": "~0.20.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@repo/eslint-config": "workspace:*",
     "@repo/prettier-config": "workspace:*",
     "@repo/types": "workspace:*",
-    "@repo/typescript-config": "workspace:*"
+    "@repo/typescript-config": "workspace:*",
+    "tailwindcss": "^3.4.17"
   },
   "prettier": "@repo/prettier-config",
   "private": true,

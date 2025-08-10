@@ -6,5 +6,10 @@
     {
       "mode": "auto"
     }
+  ],
+   "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "headerClassName"
   ]
 }
