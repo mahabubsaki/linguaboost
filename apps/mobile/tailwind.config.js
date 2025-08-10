@@ -16,11 +16,13 @@ module.exports = {
         // Headers: 24px-32px, Bold
         'header-sm': ['24px', { lineHeight: '32px', fontWeight: '700' }],
         'header-md': ['28px', { lineHeight: '36px', fontWeight: '700' }],
-        'header-lg': ['32px', { lineHeight: '40px', fontWeight: '700' }],
+        'header-lg': ['34px', { lineHeight: '40px', fontWeight: '700' }],
+        'header-xl': ['40px', { lineHeight: '48px', fontWeight: '700' }],
 
         // Subheaders: 18px-20px, Semibold
         'subheader-sm': ['18px', { lineHeight: '24px', fontWeight: '600' }],
         'subheader-lg': ['20px', { lineHeight: '28px', fontWeight: '600' }],
+        'subheader-thin': ['18px', { lineHeight: '24px', fontWeight: '400' }],
 
         // Body Text: 14px-16px, Regular
         'body-sm': ['14px', { lineHeight: '20px', fontWeight: '400' }],

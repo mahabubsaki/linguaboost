@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Animated } from 'react-native';
+import { Animated, Easing } from 'react-native';
 
 const useBounce = () => {
   const bounceAnim = useRef(new Animated.Value(0)).current;
@@ -9,12 +9,12 @@ const useBounce = () => {
       Animated.sequence([
         Animated.timing(bounceAnim, {
           toValue: -30,
-          duration: 600,
+          duration: 800,
           useNativeDriver: true
         }),
         Animated.timing(bounceAnim, {
           toValue: 0,
-          duration: 600,
+          duration: 1000,
           useNativeDriver: true
         })
       ])
