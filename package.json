@@ -12,6 +12,7 @@
     "mobile": "pnpm --filter mobile dev",
     "desktop": "pnpm --filter desktop dev",
     "api": "pnpm --filter api dev",
+    "agent": "cd apps/agent && python -m uv run python src/main.py",
     "android": "expo run:android",
     "ios": "expo run:ios"
   },
