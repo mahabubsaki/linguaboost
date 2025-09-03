@@ -42,6 +42,9 @@ importers:
       '@hono/node-server':
         specifier: ^1.18.1
         version: 1.18.1(hono@4.8.12)
+      '@repo/grpc':
+        specifier: workspace:*
+        version: link:../../packages/grpc
       hono:
         specifier: ^4.8.12
         version: 4.8.12
@@ -256,6 +259,8 @@ importers:
       typescript-eslint:
         specifier: ^8.17.0
         version: 8.39.0(eslint@9.32.0(jiti@1.21.7))(typescript@5.8.3)
+
+  packages/grpc: {}
 
   packages/prettier-config:
     devDependencies:

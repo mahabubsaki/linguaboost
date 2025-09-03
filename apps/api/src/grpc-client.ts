@@ -1,12 +1,9 @@
 import * as grpc from '@grpc/grpc-js';
 import * as protoLoader from '@grpc/proto-loader';
 import { promisify } from 'util';
-import path from 'path';
 
-// Load the proto file
-const PROTO_PATH = path.join(process.cwd(), '../../shared/proto/agent.proto');
-
-const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
+// Load the proto file from the grpc package
+const packageDefinition = protoLoader.loadSync(require.resolve('@repo/grpc/proto'), {
   keepCase: true,
   longs: String,
   enums: String,

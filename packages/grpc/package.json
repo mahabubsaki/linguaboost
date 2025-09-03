@@ -1,0 +1,11 @@
+{
+  "name": "@repo/grpc",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./proto": "./proto/agent.proto"
+  },
+  "files": [
+    "proto/**/*"
+  ]
+}
