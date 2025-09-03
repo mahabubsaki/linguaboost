@@ -1,6 +1,7 @@
 import { useClientOnlyValue } from '@/hooks/useClientOnlyValue';
 import { Tabs } from 'expo-router';
-export default function SplashLayout() {
+
+export default function CarousalLayout() {
   return (
     <Tabs
       screenOptions={{

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Animated, Pressable, Text, View } from 'react-native';
 import { usePressableOpacity } from '@/animations/pressableOpacity';
+import { useRouter } from 'expo-router';
 
 const TextSection = () => {
   const { opacity, setActive, setInactive } = usePressableOpacity(1, 0.89, 150);
-
+  const router = useRouter();
   return (
     <View className="flex flex-col items-center gap-3 px-6 py-8">
       <Text className="mb-2 text-header-lg text-white">LinguaAI</Text>
@@ -18,6 +19,7 @@ const TextSection = () => {
             className="w-[150px] rounded-3xl bg-white py-2"
             onPressIn={setActive}
             onPressOut={setInactive}
+            onPress={() => router.navigate('/(carousal)')}
           >
             <Text className="text-center text-body-lg font-semibold text-primary">Get Started</Text>
           </Pressable>

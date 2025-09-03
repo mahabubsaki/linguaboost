@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package linguaboost;
+
+// The greeting service definition
+service AgentService {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  
+  // Process text analysis
+  rpc ProcessText (TextRequest) returns (TextResponse) {}
+  
+  // Get agent status
+  rpc GetStatus (StatusRequest) returns (StatusResponse) {}
+}
+
+// The request message containing the user's name
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+
+// Text processing request
+message TextRequest {
+  string text = 1;
+  string language = 2;
+  repeated string operations = 3; // e.g., ["translate", "analyze", "summarize"]
+}
+
+// Text processing response
+message TextResponse {
+  string processed_text = 1;
+  string original_language = 2;
+  string target_language = 3;
+  map<string, string> metadata = 4;
+  bool success = 5;
+  string error_message = 6;
+}
+
+// Status request
+message StatusRequest {
+  string agent_id = 1;
+}
+
+// Status response
+message StatusResponse {
+  string agent_id = 1;
+  string status = 2; // "running", "idle", "error"
+  int64 uptime_seconds = 3;
+  int32 processed_requests = 4;
+  string version = 5;
+}

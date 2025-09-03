@@ -55,6 +55,12 @@ function RootLayoutNav() {
             headerShown: false // Hide the header for the main app screen
           }}
         />
+        <Stack.Screen
+          name="(carousal)"
+          options={{
+            headerShown: false
+          }}
+        />
       </Stack>
     </NativeWindThemeProvider>
   );
