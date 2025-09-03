@@ -122,6 +122,9 @@ importers:
       '@repo/react':
         specifier: workspace:*
         version: link:../../packages/react
+      '@repo/static-text':
+        specifier: workspace:*
+        version: link:../../packages/static-text
       expo:
         specifier: ~53.0.20
         version: 53.0.20(@babel/core@7.28.0)(@expo/metro-runtime@5.0.4(react-native@0.79.5(@babel/core@7.28.0)(@react-native-community/cli@14.0.0(typescript@5.8.3))(@types/react@19.1.9)(react@19.0.0)))(react-native@0.79.5(@babel/core@7.28.0)(@react-native-community/cli@14.0.0(typescript@5.8.3))(@types/react@19.1.9)(react@19.0.0))(react@19.0.0)
@@ -280,6 +283,21 @@ importers:
       '@repo/types':
         specifier: workspace:*
         version: link:../types
+
+  packages/static-text:
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.31.0
+        version: 9.32.0(jiti@1.21.7)
+      typescript:
+        specifier: 5.8.3
+        version: 5.8.3
 
   packages/types:
     dependencies:

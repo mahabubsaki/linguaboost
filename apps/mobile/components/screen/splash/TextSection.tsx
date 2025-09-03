@@ -19,7 +19,8 @@ const TextSection = () => {
             className="w-[150px] rounded-3xl bg-white py-2"
             onPressIn={setActive}
             onPressOut={setInactive}
-            onPress={() => router.navigate('/(carousal)')}
+  
+            onPress={() => router.navigate('/carousal')}
           >
             <Text className="text-center text-body-lg font-semibold text-primary">Get Started</Text>
           </Pressable>

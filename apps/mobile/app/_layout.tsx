@@ -15,7 +15,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(splash)'
+  initialRouteName: 'splash'
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -50,13 +50,19 @@ function RootLayoutNav() {
     <NativeWindThemeProvider defaultTheme="linguaboost">
       <Stack>
         <Stack.Screen
-          name="(splash)"
+          name="splash"
           options={{
             headerShown: false // Hide the header for the main app screen
           }}
         />
         <Stack.Screen
-          name="(carousal)"
+          name="carousal"
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name="(auth)"
           options={{
             headerShown: false
           }}

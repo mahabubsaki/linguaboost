@@ -1,0 +1,22 @@
+{
+  "name": "@repo/static-text",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./legal": "./legal.ts",
+    "./auth": "./auth.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "eslint": "^9.31.0",
+    "typescript": "5.8.3"
+  }
+}

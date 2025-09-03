@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Animated, Easing } from 'react-native';
+import { Animated } from 'react-native';
 
 const useBounce = () => {
   const bounceAnim = useRef(new Animated.Value(0)).current;
