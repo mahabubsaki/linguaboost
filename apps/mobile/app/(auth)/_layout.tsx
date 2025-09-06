@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal, ScrollView, SafeAreaView } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Modal,
+  ScrollView,
+  SafeAreaView,
+  Dimensions
+} from 'react-native';
 import { Stack } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 import { AUTH_TEXT, TERMS_OF_SERVICE, PRIVACY_POLICY } from '@repo/static-text';
+import Markdown from 'react-native-markdown-display';
 
 type ModalType = 'terms' | 'privacy' | null;
 
@@ -91,10 +100,17 @@ const AuthLayout = () => {
           </View>
 
           {/* Modal Content */}
-          <ScrollView className="flex-1 px-6 py-4">
+          {/* <SafeAreaView> */}
+          <ScrollView
+            className="flex-1 px-6 py-4"
+            // contentInsetAdjustmentBehavior="automatic"
+            style={{ height: '110%' }}
+          >
             <Text className="mb-4 text-sm text-gray-600">{modalContent?.lastUpdated}</Text>
-            <Text className="text-base leading-6 text-gray-800">{modalContent?.content}</Text>
+            <Markdown>{modalContent?.content}</Markdown>
+            <Text>2</Text>
           </ScrollView>
+          {/* </SafeAreaView> */}
 
           {/* Modal Footer */}
           <View className="border-t border-gray-200 px-6 py-4">
