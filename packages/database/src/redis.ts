@@ -146,39 +146,55 @@ export class RedisCache {
 
 // Session management utilities
 export class RedisSession {
-  private static readonly SESSION_PREFIX = 'session:';
+  // Default prefix can be configured via env or changed at runtime
+  private static sessionPrefix: string = 'session:';
   private static readonly DEFAULT_TTL = 24 * 60 * 60; // 24 hours
+
+  // Allow changing the default prefix at runtime
+  static setPrefix(prefix: string) {
+    RedisSession.sessionPrefix = prefix;
+  }
+
+  static getPrefix(): string {
+    return RedisSession.sessionPrefix;
+  }
 
   static async create(
     sessionId: string,
     data: object,
-    ttlSeconds = RedisSession.DEFAULT_TTL
+    prefix: string,
+    ttlSeconds?: number
   ): Promise<boolean> {
-    const key = `${RedisSession.SESSION_PREFIX}${sessionId}`;
-    return await RedisCache.set(key, data, ttlSeconds);
+    const keyPrefix = prefix;
+    const ttl = ttlSeconds ?? RedisSession.DEFAULT_TTL;
+    const key = `${keyPrefix}${sessionId}`;
+    return await RedisCache.set(key, data, ttl);
   }
 
-  static async get<T = object>(sessionId: string): Promise<T | null> {
-    const key = `${RedisSession.SESSION_PREFIX}${sessionId}`;
+  static async get<T = object>(sessionId: string, prefix: string): Promise<T | null> {
+    const key = `${prefix}${sessionId}`;
     return await RedisCache.get<T>(key, true);
   }
 
   static async update(
     sessionId: string,
     data: object,
-    ttlSeconds = RedisSession.DEFAULT_TTL
+    prefix: string,
+    ttlSeconds?: number
   ): Promise<boolean> {
-    const key = `${RedisSession.SESSION_PREFIX}${sessionId}`;
-    return await RedisCache.set(key, data, ttlSeconds);
+    const keyPrefix = prefix;
+    const ttl = ttlSeconds ?? RedisSession.DEFAULT_TTL;
+    const key = `${keyPrefix}${sessionId}`;
+    return await RedisCache.set(key, data, ttl);
   }
 
-  static async destroy(sessionId: string): Promise<boolean> {
-    const key = `${RedisSession.SESSION_PREFIX}${sessionId}`;
+  static async destroy(sessionId: string, prefix: string): Promise<boolean> {
+    const key = `${prefix}${sessionId}`;
     return await RedisCache.del(key);
   }
 
-  static async exists(sessionId: string): Promise<boolean> {
-    const key = `${RedisSession.SESSION_PREFIX}${sessionId}`;
+  static async exists(sessionId: string, prefix: string): Promise<boolean> {
+    const key = `${prefix}${sessionId}`;
     return await RedisCache.exists(key);
   }
 }

@@ -31,7 +31,8 @@ export class ConnectionManager {
       console.log('✅ Database package initialized successfully');
     } catch (error) {
       console.error('❌ Failed to initialize database package:', error);
-      throw error;
+      await disconnectRedis();
+      await closeConnection();
     }
   }
 

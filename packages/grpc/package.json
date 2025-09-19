@@ -2,9 +2,12 @@
   "name": "@repo/grpc",
   "version": "0.0.0",
   "private": true,
-  "exports": {
-    "./proto": "./proto/agent.proto"
-  },
+  "type": "module",
+   "main": "./index.ts",
+  "types": "./index.ts",
+   "exports": {
+   ".":"./index.ts"
+   },
   "files": [
     "proto/**/*"
   ]

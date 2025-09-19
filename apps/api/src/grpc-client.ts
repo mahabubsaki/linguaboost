@@ -1,9 +1,11 @@
 import * as grpc from '@grpc/grpc-js';
 import * as protoLoader from '@grpc/proto-loader';
 import { promisify } from 'util';
+import protoPath from '@repo/grpc';
+import env from './config/env';
 
 // Load the proto file from the grpc package
-const packageDefinition = protoLoader.loadSync(require.resolve('@repo/grpc/proto'), {
+const packageDefinition = protoLoader.loadSync(protoPath, {
   keepCase: true,
   longs: String,
   enums: String,
@@ -11,7 +13,10 @@ const packageDefinition = protoLoader.loadSync(require.resolve('@repo/grpc/proto
   oneofs: true,
 });
 
+
 const agentProto = grpc.loadPackageDefinition(packageDefinition) as any;
+
+
 
 // Create gRPC client
 class AgentClient {
@@ -19,7 +24,7 @@ class AgentClient {
 
   constructor() {
     this.client = new agentProto.linguaboost.AgentService(
-      'localhost:50051',
+      env.AGENT_SERVICE_URL,
       grpc.credentials.createInsecure()
     );
   }

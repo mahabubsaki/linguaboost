@@ -1,8 +1,10 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
+import env from './config/env';
+import schema from './schema';
 
 // Database connection string
-const DATABASE_URL = process.env.DATABASE_URL!;
+const DATABASE_URL = env.DATABASE_URL;
 
 // Create Postgres client for Drizzle
 const client = postgres(DATABASE_URL, {
@@ -13,15 +15,17 @@ const client = postgres(DATABASE_URL, {
 });
 
 // Create Drizzle instance
-export const db = drizzle(client);
-
-// Export the postgres client for advanced usage
-export { client as postgresClient };
+export const db = drizzle(client, {
+  schema: {
+    ...schema
+  }
+});
 
 // Database connection test
 export async function testConnection() {
   try {
     const result = await client`SELECT 1 as test`;
+
     console.log('✅ Database connection successful:', result);
     return true;
   } catch (error) {
@@ -39,3 +43,6 @@ export async function closeConnection() {
     console.error('❌ Error closing database connection:', error);
   }
 }
+
+// Export the postgres client for advanced usage
+export { client as postgresClient };

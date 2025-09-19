@@ -45,10 +45,19 @@ importers:
       '@repo/grpc':
         specifier: workspace:*
         version: link:../../packages/grpc
+      dotenv:
+        specifier: ^17.2.2
+        version: 17.2.2
       hono:
         specifier: ^4.8.12
         version: 4.8.12
+      zod:
+        specifier: ^3.25.76
+        version: 3.25.76
     devDependencies:
+      '@repo/database':
+        specifier: workspace:*
+        version: link:../../packages/database
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -235,6 +244,9 @@ importers:
       better-auth:
         specifier: ^1.3.8
         version: 1.3.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      dotenv:
+        specifier: ^17.2.2
+        version: 17.2.2
       drizzle-orm:
         specifier: ^0.37.0
         version: 0.37.0(@prisma/client@5.22.0(prisma@5.22.0))(@types/react@19.1.9)(kysely@0.28.5)(postgres@3.4.7)(prisma@5.22.0)(react@19.1.1)
@@ -3265,6 +3277,10 @@ packages:
 
   dotenv@16.6.1:
     resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
+    engines: {node: '>=12'}
+
+  dotenv@17.2.2:
+    resolution: {integrity: sha512-Sf2LSQP+bOlhKWWyhFsn0UsfdK/kCWRv1iuA2gXAwt3dyNabr6QSj00I2V10pidqz69soatm9ZwZvpQMTIOd5Q==}
     engines: {node: '>=12'}
 
   drizzle-kit@0.29.1:
@@ -9974,13 +9990,15 @@ snapshots:
 
   dotenv-expand@11.0.7:
     dependencies:
-      dotenv: 16.4.7
+      dotenv: 16.6.1
 
   dotenv@16.0.3: {}
 
   dotenv@16.4.7: {}
 
   dotenv@16.6.1: {}
+
+  dotenv@17.2.2: {}
 
   drizzle-kit@0.29.1:
     dependencies:

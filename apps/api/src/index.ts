@@ -1,13 +1,39 @@
 import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
 import AgentClient from './grpc-client.js';
+import client,{testConnection} from '@repo/database/client'
+import {testSchema} from '@repo/database/schema'
+import {RedisSession,connectRedis} from '@repo/database/redis'
 
 const app = new Hono();
 const agentClient = new AgentClient();
 
+
 app.get('/', (c) => {
   return c.text('Hello Hono! API Server is running.');
 });
+
+app.get('/db',async(c)=>{
+try{
+
+  const redis = await RedisSession.exists('allData','data:')
+  console.log('Redis exists:',redis);
+  let data =[]
+  if(!redis){
+     data = await client.db.query.test.findMany()
+    RedisSession.create('allData',data,'data:') 
+  }else{
+    data = await RedisSession.get('allData','data:') as unknown[]
+  }
+  
+
+  return c.json(data)
+}catch(error){
+  console.error('Error fetching test data:', error)
+  return c.json({error:'Failed to fetch test data'},500)
+}
+
+})
 
 // Health check
 app.get('/health', (c) => {
@@ -55,12 +81,15 @@ serve(
     fetch: app.fetch,
     port: 8080
   },
-  (info) => {
+  async (info) => {
+    await connectRedis();
+    await testConnection()
     console.log(`API Server is running on http://localhost:${info.port}`);
     console.log('Available endpoints:');
     console.log('  GET  /health');
     console.log('  GET  /agent/hello/:name');
     console.log('  GET  /agent/status');
     console.log('  POST /agent/process');
+    console.log('  GET  /db');
   }
 );

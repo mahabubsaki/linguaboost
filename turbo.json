@@ -1,12 +1,13 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "ui": "tui",
+  "globalDependencies": [".env"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**", "out/**", "dist/**"],
-      "env": ["NODE_ENV","DATABASE_URL","REDIS_URL"]
+      "env": ["NODE_ENV","DATABASE_URL","REDIS_URL","AGENT_SERVICE_URL"]
     },
     "lint": {
       "dependsOn": ["^lint"]
