@@ -13,9 +13,12 @@
     "@grpc/grpc-js": "^1.13.4",
     "@grpc/proto-loader": "^0.7.15",
     "@hono/node-server": "^1.18.1",
+    "@hono/trpc-server": "^0.4.0",
     "@repo/grpc": "workspace:*",
+    "@trpc/server": "^11.5.1",
     "dotenv": "^17.2.2",
     "hono": "^4.8.12",
+    "jsonwebtoken": "^9.0.2",
     "zod": "^3.25.76"
   },
   "devDependencies": {
@@ -25,6 +28,7 @@
     "@repo/prettier-config": "workspace:*",
     "@repo/types": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@types/jsonwebtoken": "^9.0.10",
     "tsx": "^4.7.1"
   }
 }

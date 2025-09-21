@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { AUTH_TEXT } from '@repo/static-text';
+import authCient from '@/lib/auth-client';
 
 const SignUp = () => {
   const [fullName, setFullName] = useState('');
@@ -25,10 +26,19 @@ const SignUp = () => {
     setIsLoading(true);
     try {
       // TODO: Implement actual sign-up logic
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
-      Alert.alert('Success', AUTH_TEXT.success.accountCreated);
+      // await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
+      const { data, error } = await authCient.signUp.email({
+        email,
+        password,
+        name: fullName
+      });
+      console.log({
+        data,
+        error
+      });
+      // Alert.alert('Success', AUTH_TEXT.success.accountCreated);
 
-      router.replace('/splash');
+      // router.replace('/splash');
     } catch {
       Alert.alert('Error', AUTH_TEXT.errors.signUpFailed);
     } finally {

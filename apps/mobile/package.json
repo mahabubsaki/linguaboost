@@ -21,10 +21,12 @@
     "@repo/react": "workspace:*",
     "@repo/static-text": "workspace:*",
     "expo": "~53.0.20",
+    "expo-constants": "^18.0.9",
     "expo-dev-client": "~5.2.4",
     "expo-font": "~13.3.2",
     "expo-linking": "~7.1.7",
     "expo-router": "~5.1.4",
+    "expo-secure-store": "^14.2.4",
     "expo-splash-screen": "~0.30.10",
     "expo-status-bar": "~2.2.3",
     "expo-system-ui": "~5.0.10",
@@ -33,10 +35,10 @@
     "react": "19.0.0",
     "react-native": "0.79.5",
     "react-native-markdown-display": "^7.0.2",
-    "react-native-reanimated": "~3.17.5",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
     "react-native-web": "~0.20.0",
+    "react-native-webcrypto": "1.0.0-alpha.3",
     "react-native-worklets": "^0.4.1"
   },
   "devDependencies": {
@@ -46,6 +48,9 @@
     "@repo/types": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "tailwindcss": "^3.4.17"
+  },
+  "overrides": {
+    "jose": "^6.0.0"
   },
   "prettier": "@repo/prettier-config",
   "private": true,
