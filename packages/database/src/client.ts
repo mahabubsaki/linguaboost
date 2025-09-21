@@ -16,9 +16,9 @@ const client = postgres(DATABASE_URL, {
 
 // Create Drizzle instance
 export const db = drizzle(client, {
-  schema: {
-    ...schema
-  }
+  schema: schema,
+  logger: true,
+  casing: 'camelCase'
 });
 
 // Database connection test

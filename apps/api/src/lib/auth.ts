@@ -1,12 +1,12 @@
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { db } from '@repo/database/client';
-import schemas from '@repo/database/schema';
+import { accountSchema, sessionSchema, userSchema, verificationSchema } from '@repo/database/schema';
 import { nextCookies } from "better-auth/next-js";
 import { jwt, username } from "better-auth/plugins";
 
 import { expo } from '@better-auth/expo';
-import { connectRedis, redis } from '@repo/database/redis';
+import { redis } from '@repo/database/redis';
 import env from '../config/env';
 
 export const auth = betterAuth({
@@ -15,18 +15,37 @@ export const auth = betterAuth({
     trustedOrigins: ["linguaboost:mobile://"],
     database: drizzleAdapter(db, {
         provider: 'pg',
+        debugLogs: true,
+        camelCase: true,
         schema: {
-            ...schemas
+            user: userSchema,
+            account: accountSchema,
+            session: sessionSchema,
+            verification: verificationSchema,
+
+            // session: schemas.session,
+            // account: schemas.account,
+            // verificationToken: schemas.verification,
         }
     }),
     emailAndPassword: {
+
         enabled: true // Enable authentication using email and password.
     },
     session: {
+
+        preserveSessionInDatabase: true,
+        storeSessionInDatabase: true,
+
+
         cookieCache: {
             enabled: true,
             maxAge: 10 * 60, // 10 minutes
         },
+    },
+    verification: {
+
+        modelName: 'verificationToken',
     },
     logger: {
         log(level, message, ...args) {
@@ -72,16 +91,14 @@ export const auth = betterAuth({
     },
     secondaryStorage: {
         get: async (key) => {
-            await connectRedis();
             return await redis.get(key);
         },
         set: async (key, value, ttl) => {
-            await connectRedis();
             if (ttl) await redis.set(key, value, { EX: ttl });
             else await redis.set(key, value);
         },
         delete: async (key) => {
-            await connectRedis();
+
             await redis.del(key);
         },
     }

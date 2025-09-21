@@ -39,7 +39,8 @@ const SignUp = () => {
       // Alert.alert('Success', AUTH_TEXT.success.accountCreated);
 
       // router.replace('/splash');
-    } catch {
+    } catch (err) {
+      console.log(err);
       Alert.alert('Error', AUTH_TEXT.errors.signUpFailed);
     } finally {
       setIsLoading(false);
